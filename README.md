@@ -2,25 +2,25 @@
 
 User guide of gRPC CLI for Fabric for Deep Learning (FfDL) for AI Sphere.
 
-### 1. Install FfDL gRPC CLI
-##### 1.1 Clone repository
+## 1. Install FfDL gRPC CLI
+### 1.1 Clone repository
 ```
 cd $GOPATH/src/github.com/AISphere/
 git clone https://github.com/AISphere/ffdl-cli.git
 ```
-##### 1.2 Add CLI path
+### 1.2 Add CLI path
 For example, if you are using bash, you can add the path in your `.bash_profile`
 ```
 # ffdl
 export PATH="$PATH:$GOPATH/src/github.com/AISphere/ffdl-cli/bin"
 ```
-##### 1.3 Build FfDL CLI
+### 1.3 Build FfDL CLI
 Use glide to install all dependencies and build the CLI. (Install glide: https://glide.sh/)
 ```
 glide install
 make build
 ```
-##### 1.4 Verify CLI installed
+### 1.4 Verify CLI installed
 ```
 ➜  ~ ffdl
 
@@ -56,8 +56,8 @@ Flags:
 Use "ffdl [command] --help" for more information about a command.
 
 ```
-### 2. Using FfDL gRPC CLI
-##### 2.1 Set environment variables
+## 2. Using FfDL gRPC CLI
+### 2.1 Set environment variables
 `DLAAS_GRPC` is the gRPC address. It should point to your FfDL cluster.
 `DLAAS_USERID` is the ID string defined by users. *Note* we should only use letters and numbers here because special characters like `@` will return errors.
 ```
@@ -78,8 +78,8 @@ You can check your current env variables the FfDL CLI:
 env | grep DLAAS_
 ```
 
-##### 2.2 CLI commands
-###### 2.2.1 Train a new model
+### 2.2 CLI commands
+#### 2.2.1 Train a new model
 ```
 ➜ ffdl train --help
 
@@ -203,7 +203,7 @@ tds-caffe-mnist-model
 EMExtractionSpec ImageTag:
 Training job created. Training ID is training-f3T_WHqkR
 ```
-###### 2.2.2 List all models
+#### 2.2.2 List all models
 ```
 ➜  ffdl list --help
 List all of models
@@ -231,7 +231,7 @@ training-mDAAWN3zR mnist-caffe-model                caffe                       
 training-f3T_WHqkR mnist-caffe-model                caffe                                                                  2018-02-12 15:54:04.126156866 +0000 UTC m=+329582.746334558 2018-02-12 15:55:27.430932401 +0000 UTC m=+329666.051110288
 training-tT7eZHqkR mnist-caffe-model                caffe                                                                  2018-02-12 15:56:37.065814731 +0000 UTC m=+329740.333605278 2018-02-12 15:57:23.209668012 +0000 UTC m=+329787.578219621
 ```
-###### 2.2.3 Show model details
+#### 2.2.3 Show model details
 ```
 ➜  ffdl show --help
 Get detailed information about models
@@ -286,7 +286,7 @@ Querying model with ID: training-mDAAWN3zR ...
   "job_id": "025eccc8-1e62-4aa0-6d73-487c94cfc621"
 }
 ```
-###### 2.2.4 Monitor a model
+#### 2.2.4 Monitor a model
 ```
 ➜  ffdl status --help
 Show model training status
@@ -306,7 +306,7 @@ Example:
 Getting training status ID 'training-mDAAWN3zR' ...
 Training Status is Status_COMPLETED
 ```
-###### 2.2.5 Download training log
+#### 2.2.5 Download training log
 ```
 View the ongoing training logs
 
@@ -340,7 +340,7 @@ Example:
 9 1518450564994879293 CSF_HELLO_WORLD_PORT_443_TCP=tcp://172.21.23.185:443
 10 1518450565000143000 CSF_HELLO_WORLD_PORT_443_TCP_ADDR=172.21.23.185
 ```
-###### 2.2.6 Download trained model
+#### 2.2.6 Download trained model
 ```
 ➜  ffdl download --help
 Download the trained model to local
@@ -366,7 +366,7 @@ Model definition training-mDAAWN3zR is downloaded to training-mDAAWN3zR_definiti
 Downloading trained model 'training-mDAAWN3zR' ...
 Trained model training-mDAAWN3zR is downloaded to training-mDAAWN3zR_trainedmodel.zip successfully
 ```
-###### 2.2.7 Delete model
+#### 2.2.7 Delete model
 ```
 Delete a model
 
@@ -382,7 +382,7 @@ Connected to trainer
 Deleting model 'training-rElol5Xzg' ...
 Training model training-rElol5Xzg deleted
 ```
-###### 2.2.8 Halt a training
+#### 2.2.8 Halt a training
 ```
 ➜  ~ ffdl halt -h
 Halt a training Job
@@ -396,10 +396,12 @@ Flags:
 Global Flags:
       --config string   config file (default is $HOME/.dlaas-user-guide.yaml)
 ```
-###### 2.2.9 Version info
+#### 2.2.9 Version info
 ```
 $ ffdl version
 CLI version: DLaaS_CLI 1.0
 Build Time : 20190101
 ```
 
+# Acknowledgments
+The original author of this gRPC CLI is Ursula Zhou.
