@@ -1,0 +1,24 @@
+package: github.com/AISphere/ffdl-cli
+import:
+- package: github.com/cenkalti/backoff
+  version: v1.1.0
+- package: github.com/mitchellh/go-homedir
+- package: github.com/spf13/cobra
+  version: v0.0.1
+- package: github.com/spf13/viper
+  version: v1.0.0
+- package: google.golang.org/grpc
+  version: v1.8.2
+  subpackages:
+  - credentials
+- package: github.com/AISphere/ffdl-trainer
+  version: master
+  subpackages:
+  - trainer/grpc_trainer_v2
+- package: golang.org/x/text
+  subpackages:
+  - tabwriter
+- package: github.com/sirupsen/logrus
+  version: master
+- package: github.com/stretchr/testify/assert
+  version: master
