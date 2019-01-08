@@ -404,4 +404,4 @@ Build Time : 20190101
 ```
 
 # Acknowledgments
-The original author of this gRPC CLI is Ursula Zhou.
+Ursula Zhou<Ursula.Zhou@ibm.com> (initial author)
