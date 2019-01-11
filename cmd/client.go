@@ -16,6 +16,7 @@ package cmd
 
 import (
 	"context"
+	"encoding/base64"
 	"fmt"
 	"os"
 	"time"
@@ -32,6 +33,7 @@ var (
 	dlaasGrpcClient TrainerClient //Only initiate if we are using gRPC (initiate via trainModelGrpc())
 	defaultBackoff  = backoff.NewExponentialBackOff()
 	gRPCpath        = os.Getenv("DLAAS_GRPC")
+	gRpcCertString  = os.Getenv("FFDL_GRPC_CERT") // ca.crt
 )
 
 // TrainerClient represents the client interface to the FfDL Trainer service
@@ -56,12 +58,22 @@ func (c *trainerClient) Close() error {
 	return nil
 }
 
-// ca.crt
-var caCertB = []byte(`-----BEGIN CERTIFICATE-----
-...
------END CERTIFICATE-----`)
+// Certificate could be hardcoded like this:
+//var caCertB = []byte(`-----BEGIN CERTIFICATE-----
+//...
+//-----END CERTIFICATE-----`)
 
 func createClientDialOpts() ([]grpc.DialOption, error) {
+
+	// Decode Base64-encoded certificate string into byte array
+	// fmt.Printf("Debug - Cert String: %v\n", gRpcCertString)
+	caCertB, err := base64.StdEncoding.DecodeString(gRpcCertString)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when trying to decode certificate: %v\n", err)
+		os.Exit(1)
+	}
+	// fmt.Printf("Debug - Decoded Cert String: %v\n", caCertB)
+
 	var opts []grpc.DialOption
 
 	cp := x509.NewCertPool()

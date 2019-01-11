@@ -60,9 +60,12 @@ Use "ffdl [command] --help" for more information about a command.
 ### 2.1 Set environment variables
 `DLAAS_GRPC` is the gRPC address. It should point to your FfDL cluster.
 `DLAAS_USERID` is the ID string defined by users. *Note* we should only use letters and numbers here because special characters like `@` will return errors.
+`FFDL_GRPC_CERT` is the Base64 encoded ca.crt certificate with headers as it can be found in
+`ffdl-trainer/envs/dev_values.yaml`.
 ```
 export DLAAS_GRPC="my_cluster_grpc_endpoint"
 export DLAAS_USERID="my_userid"
+export FFDL_GRPC_CERT="..."
 ```
 
 If you're a developer, set your Kubernetes context, and call `make cli-config` to see how to set the variables.
