@@ -76,6 +76,12 @@ export DLAAS_USERID=user-foo  # replace with your name
 export DLAAS_GRPC=xxx.xxx.xxx.xxx:pppp
 ```
 
+If you would like to read the certificate value directly from your development environment file, the following should
+work:
+```bash
+export FFDL_GRPC_CERT=$(python -c "import yaml;from pathlib import Path;test=yaml.safe_load(Path(\"${HOME}/go/src/github.com/AISphere/ffdl-trainer/envs/dev_values.yaml\").read_text());print(test['certs']['ca_crt'])")
+```
+
 You can check your current env variables the FfDL CLI:
 ```
 env | grep DLAAS_
