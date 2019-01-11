@@ -58,11 +58,6 @@ func (c *trainerClient) Close() error {
 	return nil
 }
 
-// Certificate could be hardcoded like this:
-//var caCertB = []byte(`-----BEGIN CERTIFICATE-----
-//...
-//-----END CERTIFICATE-----`)
-
 func createClientDialOpts() ([]grpc.DialOption, error) {
 
 	// Decode Base64-encoded certificate string into byte array
